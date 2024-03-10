@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbsdnkbx85v7q"]
+
+[ext_resource type="Script" path="res://scenes/chest/cannon_crate.gd" id="1_av8la"]
+[ext_resource type="Texture2D" uid="uid://dn0jbs2ouxyqe" path="res://graphics/Objects/box/tdpirateobj_boxbig_0.png" id="1_emaii"]
+[ext_resource type="PackedScene" uid="uid://b4pyipt3p33iw" path="res://singletons/Interaction/interaction area/interaction_area.tscn" id="2_md4sp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wq7j"]
+size = Vector2(25, 28)
+
+[node name="CannonCrate" type="Node2D"]
+script = ExtResource("1_av8la")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_emaii")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_md4sp")]
+action_name = "Pick Up CannonBall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_1wq7j")

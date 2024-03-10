@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnqltordldro5"]
+
+[ext_resource type="Texture2D" uid="uid://bwa8owdqdqo7c" path="res://graphics/Objects/box/tdpirateobj_boxsmall_0.png" id="1_khu1l"]
+[ext_resource type="Script" path="res://UI/ItemButton.gd" id="2_heoif"]
+
+[node name="ItemButton" type="Button"]
+icon = ExtResource("1_khu1l")
+script = ExtResource("2_heoif")

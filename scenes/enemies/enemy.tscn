@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://np0i2tqyo1ko"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_iee1a"]
+[ext_resource type="Texture2D" uid="uid://cn0cld2r2ukrn" path="res://graphics/raft2.png" id="2_g34y0"]
+[ext_resource type="Texture2D" uid="uid://ytv3pm60kral" path="res://graphics/Wizard.png" id="3_sirv2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q4knl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4mri"]
+size = Vector2(130.5, 128.5)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_iee1a")
+
+[node name="Raft" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_g34y0")
+
+[node name="Player" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_q4knl")
+texture = ExtResource("3_sirv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(1.75, -0.25)
+shape = SubResource("RectangleShape2D_n4mri")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -48.0
+offset_top = 67.0
+offset_right = 42.0
+offset_bottom = 76.0
+show_percentage = false
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-293, 10)
+collide_with_areas = true
+
+[node name="CannonTimer" type="Timer" parent="."]
+unique_name_in_owner = true

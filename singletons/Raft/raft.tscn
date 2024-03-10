@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckjhfwhrg2vim"]
+
+[ext_resource type="Script" path="res://singletons/Raft/raft.gd" id="1_7bl4r"]
+[ext_resource type="PackedScene" uid="uid://b4pyipt3p33iw" path="res://singletons/Interaction/interaction area/interaction_area.tscn" id="3_reawj"]
+[ext_resource type="PackedScene" uid="uid://ce4o7r2k65kqo" path="res://singletons/Raft/object_manager.tscn" id="4_xqgog"]
+[ext_resource type="Texture2D" uid="uid://ciyjxdklsbm0l" path="res://graphics/Objects/boat/tdpirateobj_boatnomast_6.png" id="6_c22bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbaej"]
+size = Vector2(264.625, 85.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri6q4"]
+size = Vector2(34, 42)
+
+[node name="raft" type="CharacterBody2D" groups=["friendly", "raft"]]
+platform_floor_layers = 4294967244
+script = ExtResource("1_7bl4r")
+
+[node name="raftImage" type="Sprite2D" parent="." groups=["friendly"]]
+scale = Vector2(2, 1.816)
+texture = ExtResource("6_c22bc")
+
+[node name="object_manager" parent="." groups=["raft"] instance=ExtResource("4_xqgog")]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -65.0
+offset_top = 141.0
+offset_right = 41.0
+offset_bottom = 168.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["friendly"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_pbaej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["friendly"]]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_pbaej")
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(1.5, 1.5)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_reawj")]
+action_name = "Rotate"
+input = "R or F"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_ri6q4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

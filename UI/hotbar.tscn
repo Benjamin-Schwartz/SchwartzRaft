@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ftaynvt4inwh"]
+
+[ext_resource type="PackedScene" uid="uid://dnqltordldro5" path="res://UI/item_button.tscn" id="1_ewwf8"]
+[ext_resource type="Script" path="res://UI/hotbar.gd" id="1_jhpju"]
+[ext_resource type="Texture2D" uid="uid://dn0jbs2ouxyqe" path="res://graphics/Objects/box/tdpirateobj_boxbig_0.png" id="2_2agrj"]
+[ext_resource type="Texture2D" uid="uid://w6dqv8n7ba11" path="res://graphics/Icon/Cannon_icon.png" id="2_e160r"]
+[ext_resource type="Resource" uid="uid://cqpd7iqq3gx2b" path="res://Items/Resources/crate.tres" id="3_l0gjl"]
+[ext_resource type="Resource" uid="uid://c65gkr4b5trfx" path="res://Items/Resources/cannon.tres" id="5_by6jo"]
+
+[node name="Hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhpju")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -73.0
+offset_right = 58.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 10
+
+[node name="ItemButton" parent="GridContainer" instance=ExtResource("1_ewwf8")]
+layout_mode = 2
+icon = ExtResource("2_2agrj")
+item = ExtResource("3_l0gjl")
+
+[node name="ItemButton2" parent="GridContainer" instance=ExtResource("1_ewwf8")]
+layout_mode = 2
+icon = ExtResource("2_e160r")
+item = ExtResource("5_by6jo")

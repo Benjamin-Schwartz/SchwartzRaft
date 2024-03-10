@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckbphrq383cai"]
+
+[ext_resource type="Script" path="res://scenes/Weapons/Cannon/cannon.gd" id="1_nccjj"]
+[ext_resource type="PackedScene" uid="uid://ddycb0we0f81p" path="res://scenes/Projectiles/cannon_ball.tscn" id="2_ltp6k"]
+[ext_resource type="Texture2D" uid="uid://c1dq8mkp68shk" path="res://graphics/Cannon.png" id="3_7qql1"]
+[ext_resource type="PackedScene" uid="uid://b4pyipt3p33iw" path="res://singletons/Interaction/interaction area/interaction_area.tscn" id="4_xfvgm"]
+
+[sub_resource type="Animation" id="Animation_81tn5"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urvx8"]
+_data = {
+"shoot": SubResource("Animation_81tn5")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6ri0"]
+radius = 8.0
+
+[sub_resource type="Theme" id="Theme_1na6h"]
+
+[node name="Cannon" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nccjj")
+cannon_ball = ExtResource("2_ltp6k")
+
+[node name="CannonImage" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(1.22638, 1.5)
+texture = ExtResource("3_7qql1")
+flip_v = true
+hframes = 3
+
+[node name="CannonAnimation" type="AnimationPlayer" parent="CannonImage"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_urvx8")
+}
+
+[node name="StartPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(11, 1)
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_xfvgm")]
+action_name = "Load"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_g6ri0")
+
+[node name="AmmoDisplay" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = -9.0
+theme = SubResource("Theme_1na6h")
+max_value = 1.0
+step = 1.0
+value = 1.0
+show_percentage = false

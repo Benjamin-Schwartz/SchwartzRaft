@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl8u1q1dgxcfq"]
+
+[ext_resource type="PackedScene" uid="uid://ckjhfwhrg2vim" path="res://singletons/Raft/raft.tscn" id="1_7o616"]
+[ext_resource type="PackedScene" uid="uid://cwtchp632voh4" path="res://scenes/ocean.tscn" id="1_jeg5b"]
+[ext_resource type="PackedScene" uid="uid://np0i2tqyo1ko" path="res://scenes/enemies/enemy.tscn" id="4_l0p5p"]
+[ext_resource type="PackedScene" uid="uid://du7hruya76ieq" path="res://scenes/player/player.tscn" id="6_j4j3c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ocean" parent="." instance=ExtResource("1_jeg5b")]
+
+[node name="raft" parent="." instance=ExtResource("1_7o616")]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("6_j4j3c")]
+position = Vector2(15, 44)
+
+[node name="Enemy" parent="." instance=ExtResource("4_l0p5p")]
