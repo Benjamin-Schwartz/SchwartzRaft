@@ -5,4 +5,7 @@ class_name Item
 @export var texture : Texture2D
 @export var item_slot : int
 @export var scene : PackedScene
+@export var placeable : bool
+
+
 

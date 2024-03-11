@@ -40,7 +40,7 @@ func _process(_delta):
 	move_and_slide()
 	
 func _on_area_2d_body_entered(_body):
-	speed  = 100
+	speed  = 0
 
 func _on_area_2d_body_exited(_body):
 	speed = 0

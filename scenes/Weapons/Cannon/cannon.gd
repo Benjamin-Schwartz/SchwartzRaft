@@ -5,6 +5,7 @@ extends Turret
 @onready var interaction_area = $InteractionArea
 @onready var ammo_display = %AmmoDisplay
 @onready var cannon_animation = %CannonAnimation
+@onready var placeable = %Placeable
 
 @export_category("Raycast Parameters")
 @export var angle_cone_of_vision := deg_to_rad(10)

@@ -10,3 +10,4 @@ display_name = "crate"
 texture = ExtResource("2_g68ej")
 item_slot = 0
 scene = ExtResource("1_v4ap2")
+placeable = true

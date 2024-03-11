@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bluqkiq2wqujq"]
+
+[ext_resource type="Script" path="res://classes/placeable.gd" id="1_oq1cv"]
+
+[node name="Placeable" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_oq1cv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-11, -11, 10, -11, 10, 10, -11, 10)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

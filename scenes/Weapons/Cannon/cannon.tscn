@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckbphrq383cai"]
+[gd_scene load_steps=11 format=3 uid="uid://ckbphrq383cai"]
 
 [ext_resource type="Script" path="res://scenes/Weapons/Cannon/cannon.gd" id="1_nccjj"]
 [ext_resource type="PackedScene" uid="uid://ddycb0we0f81p" path="res://scenes/Projectiles/cannon_ball.tscn" id="2_ltp6k"]
 [ext_resource type="Texture2D" uid="uid://c1dq8mkp68shk" path="res://graphics/Cannon.png" id="3_7qql1"]
 [ext_resource type="PackedScene" uid="uid://b4pyipt3p33iw" path="res://singletons/Interaction/interaction area/interaction_area.tscn" id="4_xfvgm"]
+[ext_resource type="PackedScene" uid="uid://bluqkiq2wqujq" path="res://scenes/Placeable/placeable.tscn" id="5_ism17"]
 
 [sub_resource type="Animation" id="Animation_81tn5"]
 resource_name = "shoot"
@@ -29,6 +30,9 @@ _data = {
 radius = 8.0
 
 [sub_resource type="Theme" id="Theme_1na6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36h64"]
+size = Vector2(28, 21)
 
 [node name="Cannon" type="StaticBody2D"]
 collision_layer = 2
@@ -73,3 +77,11 @@ max_value = 1.0
 step = 1.0
 value = 1.0
 show_percentage = false
+
+[node name="Placeable" parent="." node_paths=PackedStringArray("parent_collision") instance=ExtResource("5_ism17")]
+unique_name_in_owner = true
+parent_collision = NodePath("../CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -0.5)
+shape = SubResource("RectangleShape2D_36h64")
